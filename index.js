@@ -1,10 +1,6 @@
 // AI SoundCloud Music Extension для SillyTavern
 // Виджет встроен в настройки
 
-import { saveSettingsDebounced } from '../../../script.js';
-import { extension_settings, getContext } from '../../extensions.js';
-import { eventSource, event_types } from '../../../script.js';
-
 const extensionName = 'ai-soundcloud';
 
 let settings = {
@@ -689,6 +685,7 @@ jQuery(async () => {
         console.log('[AI SoundCloud] ✓ Расширение загружено');
     }, 1000);
 });
+
 
 
 
