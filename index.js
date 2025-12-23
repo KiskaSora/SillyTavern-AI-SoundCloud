@@ -672,21 +672,16 @@ async function initPlayer() {
     });
 }
 
-jQuery(async () => {
+(async function() {
     loadSettings();
     injectStyles();
-    
+
+    // Ждём загрузки DOM
     setTimeout(async () => {
         initUI();
-        
-       eventSource.on(event_types.MESSAGE_RECEIVED, (data) => onMessageReceived(data));
-        
+        eventSource.on(event_types.MESSAGE_RECEIVED, onMessageReceived);
         await initPlayer();
-        console.log('[AI SoundCloud] ✓ Расширение загружено');
+        console.log('[AI SoundCloud] ✓ Расширение готово');
     }, 1000);
+})();
 });
-
-
-
-
-
