@@ -682,9 +682,14 @@ jQuery(async () => {
     
     setTimeout(async () => {
         initUI();
-        eventSource.on(event_types.MESSAGE_RECEIVED, () => onMessageReceived());
+        
+        // ✅ ИСПРАВЛЕНО: обернуто в стрелочную функцию
+        eventSource.on(event_types.MESSAGE_RECEIVED, (data) => onMessageReceived(data));
+        
         await initPlayer();
-        console.log('[AI SoundCloud] ✓ Расширение готово');
+        console.log('[AI SoundCloud] ✓ Расширение загружено');
     }, 1000);
 });
+
+
 
