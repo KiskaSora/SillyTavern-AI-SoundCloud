@@ -251,7 +251,48 @@ function injectStyles() {
         .sc-mood-btn:active {
             transform: scale(0.95);
         }
-    `;
+    `
+
+        .track-mood {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            color: #ff5500;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .track-progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .track-progress-fill {
+            height: 100%;
+            background: #ff5500;
+            transition: width 0.3s linear;
+        }
+
+        .sc-no-art {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 85, 0, 0.2);
+            border-radius: 4px;
+            font-size: 24px;
+        }
+
+        .sc-controls {
+            display: flex;
+            gap: 4px;
+            flex-direction: row;
+        }
+    ;
     document.head.appendChild(style);
 }
 
@@ -672,16 +713,14 @@ async function initPlayer() {
     });
 }
 
-(async function() {
+jQuery(async () => {
     loadSettings();
     injectStyles();
-
-    // Ждём загрузки DOM
+    
     setTimeout(async () => {
         initUI();
         eventSource.on(event_types.MESSAGE_RECEIVED, onMessageReceived);
         await initPlayer();
         console.log('[AI SoundCloud] ✓ Расширение готово');
     }, 1000);
-})();
 });
